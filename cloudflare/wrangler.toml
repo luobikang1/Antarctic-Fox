@@ -1,0 +1,46 @@
+name = "Antarctic-Fox"
+main = "workers/index.js"
+compatibility_date = "2024-01-01"
+
+# 环境变量
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[env.staging]
+vars = { ENVIRONMENT = "staging" }
+
+# KV命名空间绑定
+[[kv_namespaces]]
+binding = "KV"
+id = "your-kv-namespace-id"
+preview_id = "your-kv-preview-namespace-id"
+
+# D1数据库绑定（可选）
+[[d1_databases]]
+binding = "DB"
+database_name = "antarctic-fox"
+database_id = "your-d1-database-id"
+
+# 构建配置
+[build]
+cwd = "cloudflare"
+command = "npm run build"
+watch_paths = ["workers/**/*.js"]
+
+# 开发配置
+[dev]
+ip = "0.0.0.0"
+port = 8787
+
+# 路由配置
+[[routes]]
+pattern = "proxy.example.com/vless*"
+zone_name = "example.com"
+
+[[routes]]
+pattern = "proxy.example.com/wg*"
+zone_name = "example.com"
+
+[[routes]]
+pattern = "api.example.com/api/*"
+zone_name = "example.com"
