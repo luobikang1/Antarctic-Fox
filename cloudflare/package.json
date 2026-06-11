@@ -1,0 +1,17 @@
+{
+  "name": "arctic-fox-cloudflare",
+  "version": "1.0.0",
+  "description": "南极狐 Cloudflare Workers部分",
+  "main": "workers/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build": "echo 'Build complete'",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "devDependencies": {}
+}
